@@ -1,24 +1,24 @@
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router';
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router";
 
-import { signUp } from '../../services/authService';
+import { signUp } from "../../services/authService";
 
-import { UserContext } from '../../contexts/UserContext';
+import { UserContext } from "../../context/UserContext.jsx";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    passwordConf: '',
+    username: "",
+    password: "",
+    passwordConf: "",
   });
 
   const { username, password, passwordConf } = formData;
 
   const handleChange = (evt) => {
-    setMessage('');
+    setMessage("");
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
@@ -27,12 +27,11 @@ const SignUpForm = () => {
     try {
       const newUser = await signUp(formData);
       setUser(newUser);
-      navigate('/');
+      navigate("/");
     } catch (err) {
       setMessage(err.message);
     }
   };
-
 
   const isFormInvalid = () => {
     return !(username && password && password === passwordConf);
@@ -49,9 +48,9 @@ const SignUpForm = () => {
         <div>
           <label>Username</label>
           <input
-            type='text'
+            type="text"
             value={username}
-            name='username'
+            name="username"
             onChange={handleChange}
             placeholder="Enter your username"
             required
@@ -60,9 +59,9 @@ const SignUpForm = () => {
         <div>
           <label>Password</label>
           <input
-            type='password'
+            type="password"
             value={password}
-            name='password'
+            name="password"
             onChange={handleChange}
             placeholder="Enter your password"
             required
@@ -71,25 +70,19 @@ const SignUpForm = () => {
         <div>
           <label>Confirm Password</label>
           <input
-            type='password'
+            type="password"
             value={passwordConf}
-            name='passwordConf'
+            name="passwordConf"
             onChange={handleChange}
             placeholder="Confirm your password"
             required
           />
         </div>
         <div>
-          <button 
-            type="submit" 
-            disabled={isFormInvalid()}
-          >
+          <button type="submit" disabled={isFormInvalid()}>
             Sign Up
           </button>
-          <button 
-            type="button" 
-            onClick={() => navigate('/')}
-          >
+          <button type="button" onClick={() => navigate("/")}>
             Cancel
           </button>
         </div>

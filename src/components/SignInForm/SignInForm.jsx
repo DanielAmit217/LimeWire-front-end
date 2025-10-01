@@ -1,19 +1,19 @@
-import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router';
-import { signIn } from '../../services/authService';
-import { UserContext } from '../../contexts/UserContext';
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router";
+import { signIn } from "../../services/authService";
+import { UserContext } from "../../context/UserContext.jsx";
 
 const SignInForm = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const handleChange = (evt) => {
-    setMessage('');
+    setMessage("");
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
@@ -23,7 +23,7 @@ const SignInForm = () => {
       const signedInUser = await signIn(formData);
 
       setUser(signedInUser);
-      navigate('/');
+      navigate("/");
     } catch (err) {
       setMessage(err.message);
     }
@@ -40,10 +40,10 @@ const SignInForm = () => {
         <div>
           <label>Username</label>
           <input
-            type='text'
+            type="text"
             value={formData.username}
-            name='username'
-            autoComplete='username'
+            name="username"
+            autoComplete="username"
             onChange={handleChange}
             placeholder="Enter your username"
             required
@@ -52,20 +52,18 @@ const SignInForm = () => {
         <div>
           <label>Password</label>
           <input
-            type='password'
+            type="password"
             value={formData.password}
-            name='password'
-            autoComplete='current-password'
+            name="password"
+            autoComplete="current-password"
             onChange={handleChange}
             placeholder="Enter your password"
             required
           />
         </div>
         <div>
-          <button type="submit">
-            Sign In
-          </button>
-          <button type="button" onClick={() => navigate('/')}>
+          <button type="submit">Sign In</button>
+          <button type="button" onClick={() => navigate("/")}>
             Cancel
           </button>
         </div>
@@ -75,4 +73,3 @@ const SignInForm = () => {
 };
 
 export default SignInForm;
-
