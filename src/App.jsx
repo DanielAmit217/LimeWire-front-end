@@ -1,13 +1,15 @@
-import { Route, Routes } from "react-router";
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router";
+import SoundDetails from "./components/SoundDetails/SoundDetails.jsx";
 import "./App.css";
-import NavBar from "./components/NavBar/NavBar.jsx"
-import New from "../components/New/New";
+import SoundNew from "./components/SoundDetails/SoundNew/SoundNew.jsx";
+
 function App() {
   return (
     <>
-      <NavBar />
       <Routes>
-        <Route path="/new" element={<New />} />
+        <Route path="/sounds/:soundId" element={<SoundDetails />} />
+        <Route path="/sounds/" element={<SoundNew />} />
       </Routes>
     </>
   );
