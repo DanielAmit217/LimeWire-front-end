@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { UserContext } from "../../context/UserContext.jsx";
 import { useContext } from "react";
+import "./NavBar.css";
 
 function NavBar() {
   const { user, setUser } = useContext(UserContext);
@@ -11,34 +12,45 @@ function NavBar() {
   };
 
   return (
-    <nav>
+    <nav className="navbar" id="main-navbar">
       {user ? (
-        <ul>
-          <li>Welcome {user.username}</li>
-          <li>
-            <Link to="/">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/" onClick={handleSignOut}>
+        <div className="nav-links">
+          <div className="left-links">
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+          </div>
+          <div className="right-links">
+            <Link to="/profile" className="nav-link">
+              Profile
+            </Link>
+            <Link to="/sounds" className="nav-link">
+              New Sounds
+            </Link>
+            <Link to="/" className="nav-link" onClick={handleSignOut}>
               Sign Out
             </Link>
-          </li>
-          <li>
-            <Link to="/sounds">New Sounds</Link>
-          </li>
-          <li>
-            <Link to="/sounds/:soundId">Sound Details</Link>
-          </li>
-        </ul>
+            {/* <Link to="/sounds/:soundId" className="nav-link">
+              Sound Details
+            </Link> */}
+          </div>
+        </div>
       ) : (
-        <ul>
-          <li>
-            <Link to="/sign-up">sign-up</Link>
-          </li>
-          <li>
-            <Link to="/sign-in">sign-in</Link>
-          </li>
-        </ul>
+        <div className="nav-links">
+          <div className="left-links">
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+          </div>
+          <div className="right-links">
+            <Link to="/sign-up" className="nav-link">
+              sign-up
+            </Link>
+            <Link to="/sign-in" className="nav-link">
+              sign-in
+            </Link>
+          </div>
+        </div>
       )}
     </nav>
   );
