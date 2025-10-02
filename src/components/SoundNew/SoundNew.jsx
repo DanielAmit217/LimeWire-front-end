@@ -1,5 +1,5 @@
 import React from "react";
-import * as commentService from "../../services/commentService.js";
+// import * as commentService from "../../services/commentService.js";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 
@@ -17,6 +17,7 @@ function SoundNew() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    console.log(user);
   };
 
   return (
