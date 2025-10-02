@@ -21,7 +21,7 @@ function NavBar() {
             </Link>
           </div>
           <div className="right-links">
-            <Link to={`/users/${user._id}`} className="nav-link">
+            <Link to="/users/:userId" className="nav-link">
               Profile
             </Link>
             <Link to="/sounds" className="nav-link">
