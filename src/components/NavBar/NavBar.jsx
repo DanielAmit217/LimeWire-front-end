@@ -24,13 +24,10 @@ function NavBar() {
             </Link>
           </li>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/sounds">New Sounds</Link>
           </li>
           <li>
-            <Link to="/sounds">Sounds</Link>
-          </li>
-          <li>
-            <Link to="/sounds/:soundId">New</Link>
+            <Link to="/sounds/:soundId">Sound Details</Link>
           </li>
         </ul>
       ) : (
