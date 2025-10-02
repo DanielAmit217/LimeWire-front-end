@@ -2,6 +2,8 @@ import { useEffect, useContext } from "react";
 import { useState } from "react";
 import { UserContext } from "../../context/UserContext.jsx";
 import * as userService from "../../services/userService.js";
+import SoundList from "../SoundList/SoundList.jsx";
+import { Link } from "react-router";
 
 const Dashboard = () => {
   const [usersData, setUsersData] = useState([]);
@@ -11,10 +13,9 @@ const Dashboard = () => {
     const fetchUsers = async () => {
       try {
         const fetchedUsers = await userService.index();
-        console.log(fetchedUsers);
         setUsersData(fetchedUsers);
       } catch (error) {
-        console.log(err);
+        console.log(error);
       }
     };
     if (user) fetchUsers();
@@ -28,9 +29,12 @@ const Dashboard = () => {
       </p>
       <ul>
         {usersData.map((user) => (
-          <li key={user._id}>{user.username}</li>
+          <li key={user._id}>
+            <Link to={`/users/${user._id}`}>{user.username}</Link>
+          </li>
         ))}
       </ul>
+      <SoundList />
     </main>
   );
 };

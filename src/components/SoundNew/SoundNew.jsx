@@ -1,4 +1,3 @@
-import React from "react";
 import * as soundService from "../../services/soundService.js";
 import { useState } from "react";
 import "./SoundNew.css";
@@ -14,32 +13,32 @@ function SoundNew() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.file) {
       setError("Please select a file to upload");
       return;
     }
-    
+
     setIsLoading(true);
     setError("");
-    
+
     try {
       // Create FormData object
       const soundData = new FormData();
-      soundData.append('audio', formData.file);
-      soundData.append('Title', formData.Title);
-      soundData.append('tags', JSON.stringify(formData.tags));
-      
+      soundData.append("audio", formData.file);
+      soundData.append("Title", formData.Title);
+      soundData.append("tags", JSON.stringify(formData.tags));
+
       // Call the service
       const result = await soundService.createSound(soundData);
-      
+      console.log("Result: ", result);
+
       // Reset form
       setFormData({ Title: "", tags: [], file: null });
-      
+
       // Reset file input
       const fileInput = document.querySelector('input[type="file"]');
-      if (fileInput) fileInput.value = '';
-      
+      if (fileInput) fileInput.value = "";
     } catch (error) {
       setError(error.message || "Upload failed");
     } finally {
@@ -54,11 +53,11 @@ function SoundNew() {
 
   const handleTagChange = (e) => {
     const { value, checked } = e.target;
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
       tags: checked
         ? [...prevData.tags, value]
-        : prevData.tags.filter(tag => tag !== value)
+        : prevData.tags.filter((tag) => tag !== value),
     }));
   };
 
@@ -70,12 +69,9 @@ function SoundNew() {
   return (
     <>
       <h1>SoundsNew</h1>
-      <form
-        encType="multipart/form-data"
-        onSubmit={handleSubmit}
-      >
-        <input 
-          type="file" 
+      <form encType="multipart/form-data" onSubmit={handleSubmit}>
+        <input
+          type="file"
           accept="audio/*"
           onChange={handleFileChange}
           required
@@ -87,7 +83,7 @@ function SoundNew() {
           onChange={handleChange}
           placeholder="Add a Title..."
         />
-        
+
         <div className="tags-section">
           <h3>Tags:</h3>
           <div className="tag-checkboxes">
@@ -120,9 +116,9 @@ function SoundNew() {
             </label>
           </div>
         </div>
-        
+
         {error && <div className="error-message">{error}</div>}
-        
+
         <button type="submit" disabled={isLoading}>
           {isLoading ? "Uploading..." : "Submit"}
         </button>

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
 import SoundDetails from "./components/SoundDetails/SoundDetails.jsx";
 import "./App.css";
@@ -8,9 +7,9 @@ import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import SignInForm from "./components/SignInForm/SignInForm.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import Landing from "./components/Landing/Landing.jsx";
-import Profile from "./components/Profile/Profile.jsx";
 import { UserContext } from "./context/UserContext.jsx";
 import { useContext } from "react";
+import UserProfile from "./components/UserProfile/UserProfile.jsx";
 
 function App() {
   const { user } = useContext(UserContext);
@@ -23,7 +22,7 @@ function App() {
         <Route path="/sounds/" element={<SoundNew />} />
         <Route path="/sign-up" element={<SignUpForm />} />
         <Route path="/sign-in" element={<SignInForm />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/users/:userId" element={<UserProfile />} />
       </Routes>
     </>
   );
