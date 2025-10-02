@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
 import SoundDetails from "./components/SoundDetails/SoundDetails.jsx";
 import "./App.css";
