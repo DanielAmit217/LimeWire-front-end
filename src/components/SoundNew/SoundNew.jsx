@@ -4,7 +4,7 @@ import "./SoundNew.css";
 
 function SoundNew() {
   const [formData, setFormData] = useState({
-    Title: "",
+    title: "",
     tags: [],
     file: null,
   });
@@ -26,7 +26,7 @@ function SoundNew() {
       // Create FormData object
       const soundData = new FormData();
       soundData.append("audio", formData.file);
-      soundData.append("Title", formData.Title);
+      soundData.append("title", formData.title);
       soundData.append("tags", JSON.stringify(formData.tags));
 
       // Call the service
@@ -34,7 +34,7 @@ function SoundNew() {
       console.log("Result: ", result);
 
       // Reset form
-      setFormData({ Title: "", tags: [], file: null });
+      setFormData({ title: "", tags: [], file: null });
 
       // Reset file input
       const fileInput = document.querySelector('input[type="file"]');
@@ -63,6 +63,10 @@ function SoundNew() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+    if (file && !file.type.startsWith("audio/")) {
+      setError("Only audio files are allowed");
+      return;
+    }
     setFormData({ ...formData, file });
   };
 
@@ -72,14 +76,15 @@ function SoundNew() {
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <input
           type="file"
+          name="name"
           accept="audio/*"
           onChange={handleFileChange}
           required
         />
         <input
           type="text"
-          name="Title"
-          value={formData.Title}
+          name="title"
+          value={formData.title}
           onChange={handleChange}
           placeholder="Add a Title..."
         />
@@ -90,17 +95,35 @@ function SoundNew() {
             <label className="tag-checkbox">
               <input
                 type="checkbox"
-                value="songs"
-                checked={formData.tags.includes("songs")}
+                value="Sound Bite"
+                checked={formData.tags.includes("Sound Bite")}
                 onChange={handleTagChange}
               />
-              Songs
+              Sound Bite
             </label>
             <label className="tag-checkbox">
               <input
                 type="checkbox"
-                value="sound effect"
-                checked={formData.tags.includes("sound effect")}
+                value="Music"
+                checked={formData.tags.includes("Music")}
+                onChange={handleTagChange}
+              />
+              Music
+            </label>
+            <label className="tag-checkbox">
+              <input
+                type="checkbox"
+                value="Foley"
+                checked={formData.tags.includes("Foley")}
+                onChange={handleTagChange}
+              />
+              Foley
+            </label>
+            <label className="tag-checkbox">
+              <input
+                type="checkbox"
+                value="Sound Effect"
+                checked={formData.tags.includes("Sound Effect")}
                 onChange={handleTagChange}
               />
               Sound Effect
@@ -108,8 +131,8 @@ function SoundNew() {
             <label className="tag-checkbox">
               <input
                 type="checkbox"
-                value="ambient"
-                checked={formData.tags.includes("ambient")}
+                value="Ambient"
+                checked={formData.tags.includes("Ambient")}
                 onChange={handleTagChange}
               />
               Ambient

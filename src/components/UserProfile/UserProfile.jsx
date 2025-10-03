@@ -13,6 +13,7 @@ function UserProfile() {
     const fetch = async () => {
       const response = await getUser(userId);
       setCurrentUser(response);
+      console.log(response);
     };
     fetch();
   }, []);
@@ -31,7 +32,6 @@ function UserProfile() {
   return (
     <>
       <h1>{currentUser.username}</h1>
-      {/* Check if currentUser._id === user._id */}
       {currentUser._id === user._id && (
         <form action="" onSubmit={handleSubmit}>
           <button type="submit">Delete</button>
