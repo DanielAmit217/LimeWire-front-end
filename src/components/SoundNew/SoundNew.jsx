@@ -90,17 +90,35 @@ function SoundNew() {
             <label className="tag-checkbox">
               <input
                 type="checkbox"
-                value="songs"
-                checked={formData.tags.includes("songs")}
+                value="soundBite"
+                checked={formData.tags.includes("soundBite")}
                 onChange={handleTagChange}
               />
-              Songs
+              Sound Bite
             </label>
             <label className="tag-checkbox">
               <input
                 type="checkbox"
-                value="sound effect"
-                checked={formData.tags.includes("sound effect")}
+                value="music"
+                checked={formData.tags.includes("music")}
+                onChange={handleTagChange}
+              />
+              Music
+            </label>
+             <label className="tag-checkbox">
+              <input
+                type="checkbox"
+                value="foley"
+                checked={formData.tags.includes("foley")}
+                onChange={handleTagChange}
+              />
+              Foley
+            </label>
+             <label className="tag-checkbox">
+              <input
+                type="checkbox"
+                value="soundEffect"
+                checked={formData.tags.includes("soundEffect")}
                 onChange={handleTagChange}
               />
               Sound Effect

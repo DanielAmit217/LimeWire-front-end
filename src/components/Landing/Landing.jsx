@@ -1,10 +1,10 @@
-import "./landing.css";
+import "./Landing.css";
 
 const Landing = () => {
   return (
     <main>
       <div className="greet-msg">
-        <h1>LimeWire</h1>
+        <div className="logo"> <img src="/src/assets/limewirelogo.webp" /></div>
         <p>
           <em>Lime Wire</em> is an app for managing audio files such as sound
           effects, Foley, and music samples. Each user can log into their
