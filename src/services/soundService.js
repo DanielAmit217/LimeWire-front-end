@@ -42,6 +42,7 @@ const getSoundById = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`);
     const data = await res.json();
+    console.log("data:", data);
     return data;
   } catch (error) {
     console.error("Error fetching sound:", error);
