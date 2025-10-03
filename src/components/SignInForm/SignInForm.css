@@ -1,0 +1,17 @@
+.form-component {
+  padding: 5%;
+}
+
+.buttons {
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  padding: 2%;
+}
+
+input {
+  width: 100%;
+}

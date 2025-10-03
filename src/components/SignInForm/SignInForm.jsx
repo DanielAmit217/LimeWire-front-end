@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { signIn } from "../../services/authService";
 import { UserContext } from "../../context/UserContext.jsx";
+import "./SignInForm.css";
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -32,13 +33,13 @@ const SignInForm = () => {
   return (
     <div>
       <div>
-        <div>Limewire</div>
+        <h1>Limewire</h1>
       </div>
       <h2>Sign in to your account</h2>
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username</label>
+        <div className="form-component">
+          <label>Username:</label>
           <input
             type="text"
             value={formData.username}
@@ -49,8 +50,8 @@ const SignInForm = () => {
             required
           />
         </div>
-        <div>
-          <label>Password</label>
+        <div className="form-component">
+          <label>Password:</label>
           <input
             type="password"
             value={formData.password}
@@ -61,11 +62,15 @@ const SignInForm = () => {
             required
           />
         </div>
-        <div>
-          <button type="submit">Sign In</button>
-          <button type="button" onClick={() => navigate("/")}>
-            Cancel
-          </button>
+        <div className="buttons">
+          <div className="button">
+            <button type="submit">Sign In</button>
+          </div>
+          <div className="button">
+            <button type="button" onClick={() => navigate("/")}>
+              Cancel
+            </button>
+          </div>
         </div>
       </form>
     </div>

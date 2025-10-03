@@ -46,6 +46,7 @@ function UserProfile() {
   return (
     <>
       <h1>{currentUser.username || "User Profile"}</h1>
+      <h2>your sounds:</h2>
 
       {/* Render AudioPlayer for each sound */}
       {currentUser.sounds && currentUser.sounds.length > 0 ? (
@@ -57,28 +58,25 @@ function UserProfile() {
             : null;
 
           return (
-            <div key={sound._id || index}>
-              <AudioPlayer
-                src={audioSrc}
-                title={
-                  sound.title ||
-                  sound.name ||
-                  sound.filename
-                    ?.replace(/^\d+-/, "")
-                    .replace(/\.[^/.]+$/, "") ||
-                  "Unknown"
-                }
-                artist={sound.artist || currentUser.username}
-              />
-              <CommentForm soundId={sound._id} />
-              <CommentList soundId={sound._id} />
-            </div>
+            <AudioPlayer
+              key={sound._id || index}
+              src={audioSrc}
+              title={
+                sound.title ||
+                sound.name ||
+                sound.filename?.replace(/^\d+-/, "").replace(/\.[^/.]+$/, "") ||
+                "Unknown"
+              }
+              username={currentUser.username}
+              userId={currentUser._id}
+            />
           );
         })
       ) : (
         <p>No sounds.</p>
       )}
 
+      {/* Check if currentUser._id === user._id */}
       {user && currentUser._id === user._id && (
         <form action="" onSubmit={handleSubmit}>
           <button type="submit">Delete User</button>
