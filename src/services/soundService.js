@@ -1,29 +1,15 @@
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/sounds`;
 
+import api from "./apiConfig";
+
 const createSound = async (soundData) => {
   try {
-    const token = localStorage.getItem("token");
-    const headers = {};
+    const { data } = await api.post("/sounds", soundData);
 
-    if (token) {
-      headers.Authorization = `Bearer ${token}`;
-    }
-
-    const res = await fetch(BASE_URL, {
-      method: "POST",
-      headers,
-      body: soundData, // FormData object
-    });
-
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-
-    const data = await res.json();
     return data;
   } catch (error) {
-    console.error("Error creating sound:", error);
-    throw error;
+    console.error(error);
+    throw new Error(error);
   }
 };
 
@@ -38,30 +24,25 @@ const getAllSounds = async () => {
   }
 };
 
-const getSoundById = async (id) => {
+const getSoundById = async (soundData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${id}`);
-    const data = await res.json();
-    console.log("data:", data);
+    const { data } = await api.post("/sounds/:soundId", soundData);
+
     return data;
   } catch (error) {
-    console.error("Error fetching sound:", error);
-    throw error;
+    console.error(error);
+    throw new Error(error);
   }
 };
 
-const deleteSound = async (id) => {
+const deleteSound = async (soundData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${id}`, {
-      method: "DELETE",
-      headers,
-    });
+    const { data } = await api.delete("/sounds/:soundId", soundData);
 
-    const data = await res.json();
     return data;
   } catch (error) {
-    console.error("Error fetching sound:", error);
-    throw error;
+    console.error(error);
+    throw new Error(error);
   }
 };
 

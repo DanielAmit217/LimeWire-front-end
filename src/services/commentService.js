@@ -1,17 +1,7 @@
-// const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/comment`;
 import api from "./apiConfig";
 
 const newComment = async (commentData) => {
   try {
-    // const res = await fetch(BASE_URL, {
-    //   method: "POST",
-    //   body: JSON.stringify(commentData),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // const data = await res.json();
-
     const { data } = await api.post("/comments", commentData);
 
     return data;
@@ -25,8 +15,19 @@ const getComments = async (soundId) => {
     const { data } = await api.get(`/comments?sound=${soundId}`);
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Error in getComments:", error);
+    throw error;
   }
 };
 
-export { newComment, getComments };
+const deleteComment = async (commentId) => {
+  try {
+    const { data } = await api.delete(`/comments/${commentId}`);
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export { newComment, getComments, deleteComment };

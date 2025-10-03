@@ -3,6 +3,8 @@ import { UserContext } from "../../context/UserContext";
 import { deleteUser, getUser } from "../../services/userService";
 import { useNavigate, useParams } from "react-router";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
+import CommentForm from "../CommentForm/CommentForm";
+import CommentList from "../CommentList/CommentList";
 
 function UserProfile() {
   const [currentUser, setCurrentUser] = useState({});
@@ -77,7 +79,7 @@ function UserProfile() {
       {/* Check if currentUser._id === user._id */}
       {user && currentUser._id === user._id && (
         <form action="" onSubmit={handleSubmit}>
-          <button type="submit">Delete</button>
+          <button type="submit">Delete User</button>
         </form>
       )}
     </>

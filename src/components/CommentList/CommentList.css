@@ -1,0 +1,129 @@
+.comments-container {
+  margin: 30px 0;
+}
+
+.comments-title {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+.comments-loading,
+.comments-error {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #666;
+}
+
+.comments-error {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+}
+
+.no-comments {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment-item {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.comment-item:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.comment-author {
+  font-weight: 600;
+  color: #007bff;
+  font-size: 14px;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #666;
+  margin-left: auto;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.delete-button:hover {
+  background-color: #dc3545;
+  color: white;
+  transform: scale(1.1);
+}
+
+.comment-text {
+  color: #333;
+  line-height: 1.5;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .comments-container {
+    margin: 20px 0;
+  }
+  
+  .comment-item {
+    padding: 12px;
+  }
+  
+  .comment-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .comment-date {
+    margin-left: 0;
+    order: 3;
+    flex-basis: 100%;
+  }
+  
+  .delete-button {
+    margin-left: auto;
+  }
+}
