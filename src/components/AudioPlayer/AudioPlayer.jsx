@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
-import './AudioPlayer.css';
+import { useState } from "react";
+import ReactAudioPlayer from "react-audio-player";
+import "./AudioPlayer.css";
+import { Link } from "react-router";
+// import { getUser } from "../../services/userService";
 
-const AudioPlayer = ({ src, title, artist, onPlay, onPause, onEnded }) => {
+const AudioPlayer = ({
+  src,
+  title,
+  username,
+  onPlay,
+  onPause,
+  onEnded,
+  userId,
+}) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleError = (e) => {
-    setError('Failed to load audio file');
+    setError("Failed to load audio file");
     setIsLoading(false);
   };
 
@@ -53,23 +63,31 @@ const AudioPlayer = ({ src, title, artist, onPlay, onPause, onEnded }) => {
     <div className="audio-player-container">
       {title && (
         <div className="audio-info">
-          <h3 className="audio-title">{title}</h3>
-          {artist && <p className="audio-artist">{artist}</p>}
+          <div className="left-audio-title">
+            <p>{title}</p>
+          </div>
+          <div className="right-audio-user">
+            {username && (
+              <Link to={`/users/${userId}`} className="audio-artist">
+                By: {username}
+              </Link>
+            )}
+          </div>
         </div>
       )}
-      
+
       {error && (
         <div className="audio-error">
-          <p style={{color: 'red', fontSize: '14px'}}>{error}</p>
+          <p style={{ color: "red", fontSize: "14px" }}>{error}</p>
         </div>
       )}
-      
+
       {isLoading && !error && (
         <div className="audio-loading">
-          <p style={{color: '#666', fontSize: '14px'}}>Loading audio...</p>
+          <p style={{ color: "#666", fontSize: "14px" }}>Loading audio...</p>
         </div>
       )}
-      
+
       <ReactAudioPlayer
         src={src}
         controls

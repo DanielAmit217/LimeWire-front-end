@@ -11,20 +11,20 @@ function UserProfile() {
   const { userId } = useParams();
   const navigate = useNavigate();
 
-useEffect(() => {
-  const fetch = async () => {
-    try {
-      setLoading(true);
-      const response = await getUser(userId);
-      setCurrentUser(response);
-    } catch (error) {
-      console.error("Error fetching user:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  fetch();
-}, [userId]);
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        setLoading(true);
+        const response = await getUser(userId);
+        setCurrentUser(response);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetch();
+  }, [userId]);
 
   const { user, setUser } = useContext(UserContext);
 
@@ -44,27 +44,36 @@ useEffect(() => {
   return (
     <>
       <h1>{currentUser.username || "User Profile"}</h1>
-      
+      <h2>your sounds:</h2>
+
       {/* Render AudioPlayer for each sound */}
       {currentUser.sounds && currentUser.sounds.length > 0 ? (
         currentUser.sounds.map((sound, index) => {
-          const audioSrc = sound.fileId ? 
-            `${import.meta.env.VITE_BACK_END_SERVER_URL}/sounds/stream/${sound.fileId}` : 
-            null;
+          const audioSrc = sound.fileId
+            ? `${import.meta.env.VITE_BACK_END_SERVER_URL}/sounds/stream/${
+                sound.fileId
+              }`
+            : null;
 
           return (
             <AudioPlayer
               key={sound._id || index}
               src={audioSrc}
-              title={sound.title || sound.name || sound.filename?.replace(/^\d+-/, '').replace(/\.[^/.]+$/, '') || 'Unknown'}
-              artist={sound.artist || currentUser.username}
+              title={
+                sound.title ||
+                sound.name ||
+                sound.filename?.replace(/^\d+-/, "").replace(/\.[^/.]+$/, "") ||
+                "Unknown"
+              }
+              username={currentUser.username}
+              userId={currentUser._id}
             />
           );
         })
       ) : (
         <p>No sounds.</p>
       )}
-      
+
       {/* Check if currentUser._id === user._id */}
       {user && currentUser._id === user._id && (
         <form action="" onSubmit={handleSubmit}>
