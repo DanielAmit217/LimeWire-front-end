@@ -1,5 +1,8 @@
 import * as soundService from "../../services/soundService.js";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router";
+import { UserContext } from "../../context/UserContext.jsx";
+
 import "./SoundNew.css";
 
 function SoundNew() {
@@ -10,6 +13,9 @@ function SoundNew() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +45,7 @@ function SoundNew() {
       // Reset file input
       const fileInput = document.querySelector('input[type="file"]');
       if (fileInput) fileInput.value = "";
+      navigate(`/users/${user._id}`);
     } catch (error) {
       setError(error.message || "Upload failed");
     } finally {
@@ -110,7 +117,7 @@ function SoundNew() {
               />
               Music
             </label>
-             <label className="tag-checkbox">
+            <label className="tag-checkbox">
               <input
                 type="checkbox"
                 value="foley"
@@ -119,7 +126,7 @@ function SoundNew() {
               />
               Foley
             </label>
-             <label className="tag-checkbox">
+            <label className="tag-checkbox">
               <input
                 type="checkbox"
                 value="soundEffect"
