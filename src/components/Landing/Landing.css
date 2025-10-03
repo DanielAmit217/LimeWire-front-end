@@ -33,3 +33,9 @@ em {
   background-color: black;
   bottom: -0.5rem;
 }
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
