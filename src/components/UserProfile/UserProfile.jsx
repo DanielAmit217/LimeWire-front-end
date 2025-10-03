@@ -41,6 +41,11 @@ function UserProfile() {
     return <div>Loading user profile...</div>;
   }
 
+  const handleSoundDelete = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
   return (
     <>
       <h1>{currentUser.username || "User Profile"}</h1>
@@ -56,19 +61,24 @@ function UserProfile() {
 
           return (
             <>
-              <AudioPlayer
-                key={sound._id || index}
-                src={audioSrc}
-                title={
-                  sound.title ||
-                  sound.name ||
-                  sound.filename
-                    ?.replace(/^\d+-/, "")
-                    .replace(/\.[^/.]+$/, "") ||
-                  "Unknown"
-                }
-                artist={sound.artist || currentUser.username}
-              />
+              <div>
+                <AudioPlayer
+                  key={sound._id || index}
+                  src={audioSrc}
+                  title={
+                    sound.title ||
+                    sound.name ||
+                    sound.filename
+                      ?.replace(/^\d+-/, "")
+                      .replace(/\.[^/.]+$/, "") ||
+                    "Unknown"
+                  }
+                  artist={sound.artist || currentUser.username}
+                />
+                <form action="" onSubmit={handleSoundDelete}>
+                  <button>Delete sound</button>
+                </form>
+              </div>
             </>
           );
         })
