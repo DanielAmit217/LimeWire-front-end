@@ -4,7 +4,7 @@ const createSound = async (soundData) => {
   try {
     const token = localStorage.getItem("token");
     const headers = {};
-    
+
     if (token) {
       headers.Authorization = `Bearer ${token}`;
     }
@@ -14,15 +14,15 @@ const createSound = async (soundData) => {
       headers,
       body: soundData, // FormData object
     });
-    
+
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
-    
+
     const data = await res.json();
     return data;
   } catch (error) {
-    console.error('Error creating sound:', error);
+    console.error("Error creating sound:", error);
     throw error;
   }
 };
@@ -33,7 +33,7 @@ const getAllSounds = async () => {
     const data = await res.json();
     return data;
   } catch (error) {
-    console.error('Error fetching sounds:', error);
+    console.error("Error fetching sounds:", error);
     throw error;
   }
 };
@@ -44,9 +44,26 @@ const getSoundById = async (id) => {
     const data = await res.json();
     return data;
   } catch (error) {
-    console.error('Error fetching sound:', error);
+    console.error("Error fetching sound:", error);
     throw error;
   }
 };
 
-export { createSound, getAllSounds, getSoundById };
+const deleteSound = async (id) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "DELETE",
+      headers,
+    });
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching sound:", error);
+    throw error;
+  }
+};
+
+const getStreamUrl = (id) => `${BASE_URL}/${id}/stream`;
+
+export { createSound, getAllSounds, getSoundById, getStreamUrl, deleteSound };
