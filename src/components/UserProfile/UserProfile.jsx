@@ -3,6 +3,8 @@ import { UserContext } from "../../context/UserContext";
 import { deleteUser, getUser } from "../../services/userService";
 import { useNavigate, useParams } from "react-router";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
+import CommentForm from "../CommentForm/CommentForm";
+import CommentList from "../CommentList/CommentList";
 
 function UserProfile() {
   const [currentUser, setCurrentUser] = useState({});
@@ -55,9 +57,8 @@ function UserProfile() {
             : null;
 
           return (
-            <>
+            <div key={sound._id || index}>
               <AudioPlayer
-                key={sound._id || index}
                 src={audioSrc}
                 title={
                   sound.title ||
@@ -69,7 +70,9 @@ function UserProfile() {
                 }
                 artist={sound.artist || currentUser.username}
               />
-            </>
+              <CommentForm soundId={sound._id} />
+              <CommentList soundId={sound._id} />
+            </div>
           );
         })
       ) : (
