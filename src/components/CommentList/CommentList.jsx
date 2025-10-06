@@ -3,11 +3,16 @@ import { getComments, deleteComment } from "../../services/commentService";
 import { UserContext } from "../../context/UserContext";
 import "./CommentList.css";
 
-const CommentList = ({ soundId, comments: initialComments, onCommentDeleted }) => {
+const CommentList = ({
+  soundId,
+  comments: initialComments,
+  onCommentDeleted,
+}) => {
   const { user } = useContext(UserContext);
   const [comments, setComments] = useState(initialComments || []);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     if (soundId && !initialComments) {
@@ -38,8 +43,8 @@ const CommentList = ({ soundId, comments: initialComments, onCommentDeleted }) =
 
     try {
       await deleteComment(commentId);
-      setComments(comments.filter(comment => comment._id !== commentId));
-      
+      setComments(comments.filter((comment) => comment._id !== commentId));
+
       if (onCommentDeleted) {
         onCommentDeleted(commentId);
       }
@@ -53,18 +58,22 @@ const CommentList = ({ soundId, comments: initialComments, onCommentDeleted }) =
     if (!dateString) {
       return null; // Return null so we can show a fallback
     }
-    
+
     const date = new Date(dateString);
-    
+
     // Check if date is valid
     if (isNaN(date.getTime())) {
       return null; // Return null so we can show a fallback
     }
-    
-    return date.toLocaleDateString() + " at " + date.toLocaleTimeString([], { 
-      hour: '2-digit', 
-      minute: '2-digit' 
-    });
+
+    return (
+      date.toLocaleDateString() +
+      " at " +
+      date.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    );
   };
 
   if (isLoading) {
@@ -84,38 +93,55 @@ const CommentList = ({ soundId, comments: initialComments, onCommentDeleted }) =
     );
   }
 
+  const handleEdit = (e) => {
+    e.preventDefault();
+    console.log("This will edit it");
+  };
+
   return (
-    <div className="comments-container">
-      <h3 className="comments-title">
-        Comments ({comments.length})
-      </h3>
-      <div className="comments-list">
-        {comments.map((comment) => (
-          <div key={comment._id} className="comment-item">
-            <div className="comment-header">
-              <span className="comment-author">
-                {comment.user?.username || comment.author?.username || "Anonymous User"}
-              </span>
-              <span className="comment-date">
-                {formatDate(comment.createdAt || comment.created_at || comment.date) || "Recently"}
-              </span>
-              {user && comment.user && user._id === comment.user._id && (
-                <button
-                  onClick={() => handleDeleteComment(comment._id)}
-                  className="delete-button"
-                  aria-label="Delete comment"
-                >
-                  ×
-                </button>
-              )}
-            </div>
-            <div className="comment-text">
-              {comment.comment_text}
-            </div>
+    <>
+      {isEditing ? (
+        <div className="comments-container">
+          <h3 className="comments-title">Comments ({comments.length})</h3>
+          <div className="comments-list">
+            {comments.map((comment) => (
+              <div key={comment._id} className="comment-item">
+                <div className="comment-header">
+                  <span className="comment-author">
+                    {comment.user?.username ||
+                      comment.author?.username ||
+                      "Anonymous User"}
+                  </span>
+                  <span className="comment-date">
+                    {formatDate(
+                      comment.createdAt || comment.created_at || comment.date
+                    ) || "Recently"}
+                  </span>
+                  {user && comment.user && user._id === comment.user._id && (
+                    <button
+                      onClick={() => handleDeleteComment(comment._id)}
+                      className="delete-button"
+                      aria-label="Delete comment"
+                    ></button>
+                  )}
+                </div>
+                <div className="comment-text">{comment.comment_text}</div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      ) : (
+        <form>Edit comment</form>
+      )}
+
+      <form onSubmit={handleEdit}>
+        <button
+          onClick={() => setIsEditing((prevIsEditState) => !prevIsEditState)}
+        >
+          {isEditing ? "Edit Comment" : "Cancel Edit"}
+        </button>
+      </form>
+    </>
   );
 };
 

@@ -1,9 +1,7 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { newComment } from "../../services/commentService";
 import { UserContext } from "../../context/UserContext";
 import "./CommentForm.css";
-
-
 
 const CommentForm = ({ soundId, onCommentAdded }) => {
   const { user } = useContext(UserContext);
@@ -11,6 +9,7 @@ const CommentForm = ({ soundId, onCommentAdded }) => {
     comment_text: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 

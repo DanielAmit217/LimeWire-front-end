@@ -22,8 +22,11 @@ function EditSound() {
       title: soundData.title || "",
       tags: soundData.tags || [],
       file: null,
+      audioUrl: `${import.meta.env.VITE_BACK_END_SERVER_URL}/sounds/stream/${
+        soundData.fileId
+      }`,
     });
-    console.log("This is the SoundData", soundData);
+    // console.log("This is the SoundData", soundData);
   };
 
   // TBU - need to update to handle multiple types of input tags
@@ -51,8 +54,8 @@ function EditSound() {
     e.preventDefault();
     await updateSound(soundId, formData);
 
-    console.log("This is the sound", soundId);
-    console.log("This is the formData", formData.file);
+    // console.log("This is the sound", soundId);
+    // console.log("This is the formData", formData.file);
     navigate(`/users/${user._id}`);
   };
 
@@ -69,53 +72,69 @@ function EditSound() {
     fetchSound();
   }, []);
 
+  useEffect(() => {
+    if (isEditing) {
+      navigate(`/users/${user._id}`);
+    }
+  }, [isEditing, navigate, user]);
+
   return (
     <div>
       <>
-        <h1>Edit Sound</h1>
-        <AudioPlayer src="" />
-        <form encType="multipart/form-data" onSubmit={handleEdit}>
-          <input
-            type="file"
-            name="name"
-            accept="audio/*"
-            // value?
-            onChange={handleFileChange}
-            // required
-          />
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-          />
+        {!isEditing ? (
+          <>
+            <h1>Edit Sound</h1>
+            <AudioPlayer src={formData.audioUrl} />
+            <form encType="multipart/form-data" onSubmit={handleEdit}>
+              <input
+                type="file"
+                name="name"
+                accept="audio/*"
+                // value?
+                onChange={handleFileChange}
+                // required
+              />
+              <input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+              />
 
-          <div className="tags-section">
-            <h3>Tags:</h3>
-            <div className="tag-checkboxes">
-              {["soundBite", "music", "foley", "soundEffect", "Ambient"].map(
-                (tag) => (
-                  <label key={tag} className="tag-checkbox">
-                    <input
-                      type="checkbox"
-                      value={tag}
-                      checked={formData.tags.includes(tag)}
-                      onChange={handleTagChange}
-                    />
-                    {tag.charAt(0).toUpperCase() + tag.slice(1)}
-                  </label>
-                )
-              )}
-            </div>
-          </div>
-          <button type="submit">save</button>
-        </form>
+              <div className="tags-section">
+                <h3>Tags:</h3>
+                <div className="tag-checkboxes">
+                  {[
+                    "soundBite",
+                    "music",
+                    "foley",
+                    "soundEffect",
+                    "Ambient",
+                  ].map((tag) => (
+                    <label key={tag} className="tag-checkbox">
+                      <input
+                        type="checkbox"
+                        value={tag}
+                        checked={formData.tags.includes(tag)}
+                        onChange={handleTagChange}
+                      />
+                      {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <button type="submit">save</button>
+            </form>
 
-        <button
-          onClick={() => setIsEditing((prevIsEditState) => !prevIsEditState)}
-        >
-          {isEditing ? "Edit Sound" : "Cancel Edit"}
-        </button>
+            <button
+              onClick={() =>
+                setIsEditing((prevIsEditState) => !prevIsEditState)
+              }
+            >
+              {isEditing ? "Edit Sound" : "Cancel Edit"}
+            </button>
+          </>
+        ) : null}
       </>
     </div>
   );
