@@ -12,6 +12,7 @@ const AudioPlayer = ({
   onPause,
   onEnded,
   userId,
+  soundId
 }) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -64,7 +65,9 @@ const AudioPlayer = ({
       {title && (
         <div className="audio-info">
           <div className="left-audio-title">
-            <p>{title}</p>
+            <Link to={`/sounds/${soundId}`} className="audio-title-link">
+              {title}
+            </Link>
           </div>
           <div className="right-audio-user">
             {username && (

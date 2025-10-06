@@ -41,6 +41,7 @@ const Dashboard = () => {
           <AudioPlayer
             key={sound._id || index}
             src={audioSrc}
+            soundId={sound._id}
             title={
               sound.title ||
               sound.name ||

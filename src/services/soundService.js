@@ -24,9 +24,9 @@ const getAllSounds = async () => {
   }
 };
 
-const getSoundById = async (soundData) => {
+const getSoundById = async (soundId) => {
   try {
-    const { data } = await api.post("/sounds/:soundId", soundData);
+    const { data } = await api.get(`/sounds/${soundId}`);
 
     return data;
   } catch (error) {
@@ -35,9 +35,9 @@ const getSoundById = async (soundData) => {
   }
 };
 
-const deleteSound = async (soundData) => {
+const deleteSound = async (soundId) => {
   try {
-    const { data } = await api.delete("/sounds/:soundId", soundData);
+    const { data } = await api.delete(`/sounds/${soundId}`);
 
     return data;
   } catch (error) {
