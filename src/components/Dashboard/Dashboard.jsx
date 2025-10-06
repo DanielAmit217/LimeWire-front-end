@@ -40,22 +40,23 @@ const Dashboard = () => {
               }`
             : null;
 
-        return (
-          <AudioPlayer
-            key={sound._id || index}
-            src={audioSrc}
-            soundId={sound._id}
-            title={
-              sound.title ||
-              sound.name ||
-              sound.filename?.replace(/^\d+-/, "").replace(/\.[^/.]+$/, "") ||
-              "Unknown"
-            }
-            username={sound?.user?.username}
-            userId={sound?.user?._id}
-          />
-        );
-      })}
+          return (
+            <AudioPlayer
+              key={sound._id || index}
+              src={audioSrc}
+              title={
+                sound.title ||
+                sound.name ||
+                sound.filename?.replace(/^\d+-/, "").replace(/\.[^/.]+$/, "") ||
+                "Unknown"
+              }
+              username={sound?.user?.username}
+              userId={sound?.user?._id}
+              soundId={sound._id}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };

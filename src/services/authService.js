@@ -16,7 +16,7 @@ const signUp = async (formData) => {
     throw new Error(data.error);
   } catch (error) {
     console.log(error);
-    throw new Error(error);
+    throw new Error(error.response?.data?.err || "Signup failed");
   }
 };
 
@@ -36,7 +36,7 @@ const signIn = async (formData) => {
     throw new Error(data.error);
   } catch (error) {
     console.log(error);
-    throw new Error(error);
+    throw new Error(error.response?.data?.err || "Sign-in failed");
   }
 };
 

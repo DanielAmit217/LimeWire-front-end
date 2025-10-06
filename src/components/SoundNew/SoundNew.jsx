@@ -140,8 +140,8 @@ function SoundNew() {
             <label className="tag-checkbox">
               <input
                 type="checkbox"
-                value="Ambient"
-                checked={formData.tags.includes("Ambient")}
+                value="ambient"
+                checked={formData.tags.includes("ambient")}
                 onChange={handleTagChange}
               />
               <span>Ambient</span>

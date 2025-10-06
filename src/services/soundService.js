@@ -46,6 +46,23 @@ const deleteSound = async (soundId) => {
   }
 };
 
+const updateSound = async (soundId, updateData) => {
+  try {
+    const { data } = await api.put(`/sounds/${soundId}`, updateData);
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+};
+
 const getStreamUrl = (id) => `${BASE_URL}/${id}/stream`;
 
-export { createSound, getAllSounds, getSoundById, getStreamUrl, deleteSound };
+export {
+  createSound,
+  getAllSounds,
+  getSoundById,
+  getStreamUrl,
+  deleteSound,
+  updateSound,
+};
