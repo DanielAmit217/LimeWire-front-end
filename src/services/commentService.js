@@ -15,8 +15,19 @@ const getComments = async (soundId) => {
     const { data } = await api.get(`/comments?sound=${soundId}`);
     return data;
   } catch (error) {
-    console.error(error);
+    console.error("Error in getComments:", error);
+    throw error;
   }
 };
 
-export { newComment, getComments };
+const deleteComment = async (commentId) => {
+  try {
+    const { data } = await api.delete(`/comments/${commentId}`);
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export { newComment, getComments, deleteComment };
