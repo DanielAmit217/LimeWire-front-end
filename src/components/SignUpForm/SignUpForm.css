@@ -1,23 +1,27 @@
-.signin-page {
+.signup-page {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
   justify-content: center;
-  align-items: stretch;
+  flex-direction: column;
+  align-items: center;
   padding: 40px 0px;
   box-sizing: border-box;
   width: 60vw;
 }
 
-.signin-page h1,
-.signin-page h2 {
+.signup-page h2,
+.signup-page h3 a {
   text-align: center;
   margin: 8px 0;
   color: white;
   font-weight: 600;
 }
 
-.signin-page form {
+.signup-page h3 a:hover {
+  text-decoration: underline;
+  color: rgb(113, 71, 229);
+}
+
+.signup-page form {
   background: rgba(18, 148, 144);
   border-radius: 0.7rem;
   border: 0.13rem solid black;
@@ -36,20 +40,19 @@
   align-items: stretch;
 }
 
-.signin-page form > div:not(.form-actions) {
+.signup-page form > div:not(.form-actions) {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.signin-page label {
+.signup-page label {
   font-weight: 600;
-  color: white;
 }
 
-.signin-page input[type="text"],
-.signin-page input[type="password"],
-.signin-page input[type="email"] {
+.signup-page input[type="text"],
+.signup-page input[type="password"],
+.signup-page input[type="email"] {
   width: 100%;
   padding: 10px 12px;
   font-size: 16px;
@@ -61,26 +64,15 @@
 .form-actions {
   display: flex;
   gap: 12px;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 12px;
-  margin-top: 10px;
-}
-.form-actions button {
-  width: 100%;
-  padding: 12px 0;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .form-actions button[type="submit"] {
-  background-color: #007acc;
+  background-color: #000000;
   color: white;
 }
-
 .form-actions button[type="button"] {
   background-color: #e0e0e0;
   color: #222;
@@ -105,7 +97,7 @@
   }
 }
 
-.signin-page p {
+.signup-page p {
   text-align: center;
   color: #c62828;
   margin: 0;

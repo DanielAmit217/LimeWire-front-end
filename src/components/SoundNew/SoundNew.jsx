@@ -33,6 +33,7 @@ function SoundNew() {
       const soundData = new FormData();
       soundData.append("audio", formData.file);
       soundData.append("title", formData.title);
+      soundData.append("description", formData.description);
       soundData.append("tags", JSON.stringify(formData.tags));
 
       // Call the service
@@ -78,24 +79,40 @@ function SoundNew() {
   };
 
   return (
-    <>
+    <div className="New-page">
       <h1>Make A New Sound</h1>
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <div className="input-section">
-          <input
-            type="file"
-            name="name"
-            accept="audio/*"
-            onChange={handleFileChange}
-            required
-          />
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            placeholder="Add a Title..."
-          />
+          <div className="audio-upload">
+            <h3>Upload Your Audio File</h3>
+            <input
+              type="file"
+              name="name"
+              accept="audio/*"
+              onChange={handleFileChange}
+              required
+            />
+          </div>
+          <div className="title-form">
+            <h3>Audio Title:</h3>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              placeholder="Add a Title..."
+            />
+          </div>
+          <div className="Description-form">
+            <h3>Audio Description:</h3>
+            <input
+              type="text"
+              name="title"
+              value={formData.description}
+              onChange={handleChange}
+              placeholder="Add a Description..."
+            />
+          </div>
         </div>
 
         <div className="tags-section">
@@ -152,10 +169,10 @@ function SoundNew() {
         {error && <div className="error-message">{error}</div>}
 
         <button type="submit" disabled={isLoading}>
-          {isLoading ? "Uploading..." : "Submit"}
+          {isLoading ? "Uploading..." : "Upload Sound"}
         </button>
       </form>
-    </>
+    </div>
   );
 }
 

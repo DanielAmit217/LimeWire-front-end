@@ -3,7 +3,7 @@ import AudioPlayer from "../AudioPlayer/AudioPlayer";
 
 const Landing = () => {
   return (
-    <main>
+    <div className="landing-main">
       <div className="greet-msg">
         {/* <div className="logo"> <img src="/src/assets/limewirelogo.webp" /></div> */}
         <h1>LimeWire</h1>
@@ -24,7 +24,7 @@ const Landing = () => {
         <AudioPlayer src={"68dfd6e73dfb1a2f0a4c4700"} />
         <AudioPlayer src={"68dfe03716675a5592de1563"} />
       </div>
-    </main>
+    </div>
   );
 };
 

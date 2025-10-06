@@ -50,6 +50,14 @@ const AudioPlayer = ({
     if (onEnded) onEnded(e);
   };
 
+  const handleLoadedMetadata = (e) => {
+    const audio = e.target;
+    if (audio.duration && !isNaN(audio.duration)) {
+      setIsLoading(false);
+      setError(null);
+    }
+  };
+
   if (!src) {
     return (
       <div className="audio-player-container">
@@ -65,7 +73,7 @@ const AudioPlayer = ({
       {title && (
         <div className="audio-info">
           <div className="left-audio-title">
-            <Link to={`/sounds/${soundId}`}>
+            <Link to={`/sounds/:${soundId}`}>
               <p>{title}</p>
             </Link>
           </div>
@@ -102,6 +110,7 @@ const AudioPlayer = ({
         onLoadStart={handleLoadStart}
         onLoadedData={handleLoadedData}
         onCanPlay={handleCanPlay}
+        onLoadedMetadata={handleLoadedMetadata}
         className="react-audio-player"
       />
     </div>

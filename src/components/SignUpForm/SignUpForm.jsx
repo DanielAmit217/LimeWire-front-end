@@ -1,9 +1,12 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router";
 
 import { signUp } from "../../services/authService";
 
 import { UserContext } from "../../context/UserContext.jsx";
+
+import "./SignUpForm.css";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -38,11 +41,15 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
+    <div className="signup-page">
       <div>
         <div>Limewire</div>
       </div>
-      <h2>Create your account</h2>
+      <h2>Sign Up!</h2>
+      <h3>
+        {" "}
+        Already have an account? Sign-in<Link to="/sign-in"> Here</Link>
+      </h3>
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
         <div>
@@ -78,7 +85,7 @@ const SignUpForm = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-actions">
           <button type="submit" disabled={isFormInvalid()}>
             Sign Up
           </button>

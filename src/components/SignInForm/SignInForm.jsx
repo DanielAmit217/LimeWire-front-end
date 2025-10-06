@@ -31,7 +31,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div>
+    <div className="signin-page">
       <div>
         <h1>Limewire</h1>
       </div>
@@ -49,8 +49,6 @@ const SignInForm = () => {
             placeholder="Enter your username"
             required
           />
-        </div>
-        <div className="form-component">
           <label>Password:</label>
           <input
             type="password"
@@ -61,15 +59,15 @@ const SignInForm = () => {
             placeholder="Enter your password"
             required
           />
-        </div>
-        <div className="buttons">
-          <div className="button">
-            <button type="submit">Sign In</button>
-          </div>
-          <div className="button">
-            <button type="button" onClick={() => navigate("/")}>
-              Cancel
-            </button>
+          <div className="buttons">
+            <div className="button">
+              <button type="submit">Sign In</button>
+            </div>
+            <div className="button">
+              <button type="button" onClick={() => navigate("/")}>
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </form>
