@@ -10,22 +10,22 @@ import Landing from "./components/Landing/Landing.jsx";
 import { UserContext } from "./context/UserContext.jsx";
 import { useContext } from "react";
 import UserProfile from "./components/UserProfile/UserProfile.jsx";
+import EditSound from "./components/EditSound/EditSound.jsx";
 
 function App() {
   const { user } = useContext(UserContext);
   return (
     <>
       <NavBar />
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={user ? <Dashboard /> : <Landing />} />
-          <Route path="/sounds/:soundId" element={<SoundDetails />} />
-          <Route path="/sounds/" element={<SoundNew />} />
-          <Route path="/sign-up" element={<SignUpForm />} />
-          <Route path="/sign-in" element={<SignInForm />} />
-          <Route path="/users/:userId" element={<UserProfile />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={user ? <Dashboard /> : <Landing />} />
+        <Route path="/sounds/:soundId" element={<SoundDetails />} />
+        <Route path="/sounds/:soundId/edit" element={<EditSound />} />
+        <Route path="/sounds/" element={<SoundNew />} />
+        <Route path="/sign-up" element={<SignUpForm />} />
+        <Route path="/sign-in" element={<SignInForm />} />
+        <Route path="/users/:userId" element={<UserProfile />} />
+      </Routes>
     </>
   );
 }

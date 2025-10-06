@@ -1,9 +1,7 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { newComment } from "../../services/commentService";
 import { UserContext } from "../../context/UserContext";
 import "./CommentForm.css";
-
-
 
 const CommentForm = ({ soundId, onCommentAdded }) => {
   const { user } = useContext(UserContext);
@@ -11,6 +9,7 @@ const CommentForm = ({ soundId, onCommentAdded }) => {
     comment_text: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -49,11 +48,11 @@ const CommentForm = ({ soundId, onCommentAdded }) => {
       };
 
       const newCommentData = await newComment(commentData);
-      
+
       // Reset form
       setFormData({ comment_text: "" });
       setSuccess("Comment added successfully!");
-      
+
       // Notify parent component that a comment was added
       if (onCommentAdded) {
         onCommentAdded(newCommentData);
@@ -63,10 +62,11 @@ const CommentForm = ({ soundId, onCommentAdded }) => {
       setTimeout(() => {
         setSuccess("");
       }, 3000);
-
     } catch (err) {
       console.error("Error creating comment:", err);
-      setError(err.response?.data?.error || err.message || "Failed to add comment");
+      setError(
+        err.response?.data?.error || err.message || "Failed to add comment"
+      );
     } finally {
       setIsLoading(false);
     }
@@ -108,8 +108,8 @@ const CommentForm = ({ soundId, onCommentAdded }) => {
         {success && <div className="success-message">{success}</div>}
 
         <div className="form-actions">
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={isLoading || !formData.comment_text.trim()}
             className="submit-button"
           >

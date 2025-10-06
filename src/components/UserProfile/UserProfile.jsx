@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { deleteUser, getUser } from "../../services/userService";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams, Link } from "react-router";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
 import CommentForm from "../CommentForm/CommentForm";
 import CommentList from "../CommentList/CommentList";
+import { deleteSound } from "../../services/soundService";
 import "./UserProfile.css";
 
 function UserProfile() {
   const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   const { userId } = useParams();
   const navigate = useNavigate();
@@ -27,27 +29,32 @@ function UserProfile() {
       }
     };
     fetch();
-  }, [userId]);
+  }, [userId, toggle]);
 
   const { user, setUser } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
+
     deleteUser(user._id);
     setUser(null);
     navigate("/");
-    console.log("Here we are", currentUser);
   };
 
   if (loading) {
     return <div>Loading user profile...</div>;
   }
 
+  const handleSoundDelete = async (e, soundId) => {
+    e.preventDefault();
+    await deleteSound(soundId);
+    setToggle((prev) => !prev);
+  };
+
   return (
     <>
       <h1>{currentUser.username || "User Profile"}</h1>
-      <h2>your sounds:</h2>
+      <h2>Your sounds:</h2>
 
       {/* Render AudioPlayer for each sound */}
       {currentUser.sounds && currentUser.sounds.length > 0 ? (
@@ -59,19 +66,44 @@ function UserProfile() {
             : null;
 
           return (
-            <AudioPlayer
-              key={sound._id || index}
-              src={audioSrc}
-              title={
-                sound.title ||
-                sound.name ||
-                sound.filename?.replace(/^\d+-/, "").replace(/\.[^/.]+$/, "") ||
-                "Unknown"
-              }
-              username={currentUser.username}
-              userId={currentUser._id}
-              soundId={sound._id}
-            />
+            <div key={sound._id}>
+              <AudioPlayer
+                src={audioSrc}
+                title={
+                  sound.title ||
+                  sound.name ||
+                  sound.filename
+                    ?.replace(/^\d+-/, "")
+                    .replace(/\.[^/.]+$/, "") ||
+                  "Unknown"
+                }
+                artist={sound.artist || currentUser.username}
+              />
+
+              {user && currentUser._id === user._id && (
+                <>
+                  <div key={sound._id || index}>
+                    <form
+                      action=""
+                      onSubmit={(e) => handleSoundDelete(e, sound._id)}
+                    >
+                      {user && currentUser._id === user._id && (
+                        <button type="submit">Delete Sound</button>
+                      )}
+                    </form>
+
+                    {user && currentUser._id === user._id && (
+                      <Link to={`/sounds/${sound._id}/edit`}>
+                        <button>Edit Sound</button>
+                      </Link>
+                    )}
+                  </div>
+                </>
+              )}
+
+              <CommentForm soundId={sound._id} />
+              <CommentList soundId={sound._id} />
+            </div>
           );
         })
       ) : (

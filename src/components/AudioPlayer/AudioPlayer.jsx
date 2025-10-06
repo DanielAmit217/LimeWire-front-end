@@ -73,8 +73,8 @@ const AudioPlayer = ({
       {title && (
         <div className="audio-info">
           <div className="left-audio-title">
-            <Link to={`/sounds/:${soundId}`}>
-              <p>{title}</p>
+            <Link to={`/sounds/${soundId}`} className="audio-title-link">
+              {title}
             </Link>
           </div>
           <div className="right-audio-user">
