@@ -12,7 +12,7 @@ const AudioPlayer = ({
   onPause,
   onEnded,
   userId,
-  soundId
+  soundId,
 }) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
