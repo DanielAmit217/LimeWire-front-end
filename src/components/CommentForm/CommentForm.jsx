@@ -1,7 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { newComment } from "../../services/commentService";
 import { UserContext } from "../../context/UserContext";
 import "./CommentForm.css";
+
+
 
 const CommentForm = ({ soundId, onCommentAdded }) => {
   const { user } = useContext(UserContext);
