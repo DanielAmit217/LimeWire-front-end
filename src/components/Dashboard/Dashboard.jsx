@@ -25,33 +25,38 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1>Welcome, {user.username}</h1>
-      <p>
-        This is the dashboard page where you can see a list of all sounds on our
-        database
-      </p>
-      {sounds.map((sound, index) => {
-        const audioSrc = sound.fileId
-          ? `${import.meta.env.VITE_BACK_END_SERVER_URL}/sounds/stream/${
-              sound.fileId
-            }`
-          : null;
+      <div className="greetin-block">
+        <h1>Welcome, {user.username}</h1>
+        <p>
+          This is the dashboard page where you can see a list of all sounds on
+          our database
+        </p>
+      </div>
+      <div className="sound-list">
+        {sounds.map((sound, index) => {
+          const audioSrc = sound.fileId
+            ? `${import.meta.env.VITE_BACK_END_SERVER_URL}/sounds/stream/${
+                sound.fileId
+              }`
+            : null;
 
-        return (
-          <AudioPlayer
-            key={sound._id || index}
-            src={audioSrc}
-            title={
-              sound.title ||
-              sound.name ||
-              sound.filename?.replace(/^\d+-/, "").replace(/\.[^/.]+$/, "") ||
-              "Unknown"
-            }
-            username={sound?.user?.username}
-            userId={sound?.user?._id}
-          />
-        );
-      })}
+          return (
+            <AudioPlayer
+              key={sound._id || index}
+              src={audioSrc}
+              title={
+                sound.title ||
+                sound.name ||
+                sound.filename?.replace(/^\d+-/, "").replace(/\.[^/.]+$/, "") ||
+                "Unknown"
+              }
+              username={sound?.user?.username}
+              userId={sound?.user?._id}
+              soundId={sound._id}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };

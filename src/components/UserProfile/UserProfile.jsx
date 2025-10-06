@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
 import CommentForm from "../CommentForm/CommentForm";
 import CommentList from "../CommentList/CommentList";
+import "./UserProfile.css";
 
 function UserProfile() {
   const [currentUser, setCurrentUser] = useState({});
@@ -69,6 +70,7 @@ function UserProfile() {
               }
               username={currentUser.username}
               userId={currentUser._id}
+              soundId={sound._id}
             />
           );
         })

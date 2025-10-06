@@ -16,14 +16,16 @@ function App() {
   return (
     <>
       <NavBar />
-      <Routes>
-        <Route path="/" element={user ? <Dashboard /> : <Landing />} />
-        <Route path="/sounds/:soundId" element={<SoundDetails />} />
-        <Route path="/sounds/" element={<SoundNew />} />
-        <Route path="/sign-up" element={<SignUpForm />} />
-        <Route path="/sign-in" element={<SignInForm />} />
-        <Route path="/users/:userId" element={<UserProfile />} />
-      </Routes>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={user ? <Dashboard /> : <Landing />} />
+          <Route path="/sounds/:soundId" element={<SoundDetails />} />
+          <Route path="/sounds/" element={<SoundNew />} />
+          <Route path="/sign-up" element={<SignUpForm />} />
+          <Route path="/sign-in" element={<SignInForm />} />
+          <Route path="/users/:userId" element={<UserProfile />} />
+        </Routes>
+      </main>
     </>
   );
 }
