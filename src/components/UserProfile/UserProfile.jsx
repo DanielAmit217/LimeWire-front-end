@@ -54,7 +54,7 @@ function UserProfile() {
   return (
     <>
       <h1>{currentUser.username || "User Profile"}</h1>
-      <h2>your sounds:</h2>
+      <h2>Your sounds:</h2>
 
       {/* Render AudioPlayer for each sound */}
       {currentUser.sounds && currentUser.sounds.length > 0 ? (
