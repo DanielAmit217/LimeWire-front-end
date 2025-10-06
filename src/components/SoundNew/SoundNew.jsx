@@ -79,22 +79,24 @@ function SoundNew() {
 
   return (
     <>
-      <h1>SoundsNew</h1>
+      <h1>Make A New Sound</h1>
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
-        <input
-          type="file"
-          name="name"
-          accept="audio/*"
-          onChange={handleFileChange}
-          required
-        />
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          placeholder="Add a Title..."
-        />
+        <div className="input-section">
+          <input
+            type="file"
+            name="name"
+            accept="audio/*"
+            onChange={handleFileChange}
+            required
+          />
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            placeholder="Add a Title..."
+          />
+        </div>
 
         <div className="tags-section">
           <h3>Tags:</h3>
@@ -106,7 +108,7 @@ function SoundNew() {
                 checked={formData.tags.includes("soundBite")}
                 onChange={handleTagChange}
               />
-              Sound Bite
+              <span>Sound Bite</span>
             </label>
             <label className="tag-checkbox">
               <input
@@ -115,7 +117,7 @@ function SoundNew() {
                 checked={formData.tags.includes("music")}
                 onChange={handleTagChange}
               />
-              Music
+              <span>Music</span>
             </label>
             <label className="tag-checkbox">
               <input
@@ -124,7 +126,7 @@ function SoundNew() {
                 checked={formData.tags.includes("foley")}
                 onChange={handleTagChange}
               />
-              Foley
+              <span>Foley</span>
             </label>
             <label className="tag-checkbox">
               <input
@@ -133,7 +135,7 @@ function SoundNew() {
                 checked={formData.tags.includes("soundEffect")}
                 onChange={handleTagChange}
               />
-              Sound Effect
+              <span>Sound Effect</span>
             </label>
             <label className="tag-checkbox">
               <input
@@ -142,7 +144,7 @@ function SoundNew() {
                 checked={formData.tags.includes("ambient")}
                 onChange={handleTagChange}
               />
-              Ambient
+              <span>Ambient</span>
             </label>
           </div>
         </div>

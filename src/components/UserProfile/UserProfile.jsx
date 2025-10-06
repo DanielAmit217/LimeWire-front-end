@@ -6,6 +6,7 @@ import AudioPlayer from "../AudioPlayer/AudioPlayer";
 import CommentForm from "../CommentForm/CommentForm";
 import CommentList from "../CommentList/CommentList";
 import { deleteSound } from "../../services/soundService";
+import "./UserProfile.css";
 
 function UserProfile() {
   const [currentUser, setCurrentUser] = useState({});

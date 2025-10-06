@@ -1,40 +1,82 @@
-.tags-section {
-  margin: 20px 0;
+form {
+  max-width: 400px;
+  padding: 20px;
+  background-color: rgb(50, 158, 50);
+  border: 0.13rem solid black;
+  border-radius: 0.7rem;
 }
 
-.tags-section h3 {
-  margin-bottom: 10px;
+.input-section {
+  width: 90%;
+}
+.tags-section {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tags-section {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(232, 168, 255);
+  border: 0.13rem solid black;
+  border-radius: 0.7rem;
+  color: black;
+
   font-size: 16px;
   font-weight: 600;
 }
 
 .tag-checkboxes {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.tag-checkbox {
+.tag-checkbox span {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  cursor: pointer;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 0.2rem;
   font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  background-color: #ffffff;
+  color: black;
+  position: relative;
 }
 
 .tag-checkbox input[type="checkbox"] {
-  cursor: pointer;
-  margin: 0;
+  display: none;
 }
 
-.tag-checkbox:hover {
+.tag-checkbox input[type="checkbox"]:checked + span {
+  background-color: #f0eaea;
+  /* color: rgb(135, 217, 255); */
+  border-color: #1fc0ff;
+}
+
+.tag-checkbox:hover span {
+  transform: scale(0.96);
   color: #007acc;
+  background-color: #eaf4ff;
 }
 
-/* Optional: Style the form for better layout */
-form {
-  max-width: 400px;
-  padding: 20px;
+.tag-checkbox input[type="checkbox"]:focus + * {
+  outline: 2px solid #007acc;
 }
 
 form input[type="file"],
@@ -58,6 +100,7 @@ form button {
 
 form button:hover {
   background-color: #005a9e;
+  transform: scale(0.96);
 }
 
 form button:disabled {
