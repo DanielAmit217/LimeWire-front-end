@@ -53,6 +53,7 @@ function UserProfile() {
   return (
     <>
       <h1>{currentUser.username || "User Profile"}</h1>
+      <h2>your sounds:</h2>
 
       {/* Render AudioPlayer for each sound */}
       {currentUser.sounds && currentUser.sounds.length > 0 ? (
@@ -108,6 +109,7 @@ function UserProfile() {
         <p>No sounds.</p>
       )}
 
+      {/* Check if currentUser._id === user._id */}
       {user && currentUser._id === user._id && (
         <form action="" onSubmit={handleSubmit}>
           <button type="submit">Delete User</button>
