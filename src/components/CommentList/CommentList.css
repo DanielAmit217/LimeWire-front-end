@@ -3,7 +3,7 @@
 }
 
 .comments-title {
-  color: #333;
+  color: #ffffff;
   font-size: 18px;
   margin-bottom: 20px;
   padding-bottom: 10px;
@@ -107,22 +107,22 @@
   .comments-container {
     margin: 20px 0;
   }
-  
+
   .comment-item {
     padding: 12px;
   }
-  
+
   .comment-header {
     flex-wrap: wrap;
     gap: 8px;
   }
-  
+
   .comment-date {
     margin-left: 0;
     order: 3;
     flex-basis: 100%;
   }
-  
+
   .delete-button {
     margin-left: auto;
   }
