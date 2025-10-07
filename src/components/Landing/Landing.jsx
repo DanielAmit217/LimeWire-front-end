@@ -21,8 +21,8 @@ const Landing = () => {
         </p>
       </div>
       <div className="example-sounds">
-        <AudioPlayer src={"68dfd6e73dfb1a2f0a4c4700"} />
-        <AudioPlayer src={"68dfe03716675a5592de1563"} />
+        <AudioPlayer src={"68e413a002fd75fae960f859"} />
+        <AudioPlayer src={"68e4720851cdfcae72f1db2b"} />
       </div>
     </div>
   );
