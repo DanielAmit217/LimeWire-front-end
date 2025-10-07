@@ -15,7 +15,7 @@ const createSound = async (soundData) => {
 
 const getAllSounds = async () => {
   try {
-    const res = await fetch(BASE_URL);
+    const res = await api.get("/sounds");
     const data = await res.json();
     return data;
   } catch (error) {
