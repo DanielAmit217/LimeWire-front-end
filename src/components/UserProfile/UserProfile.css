@@ -1,0 +1,98 @@
+/* === USER PROFILE PAGE === */
+
+body {
+  color: white;
+  font-family: "Inter", sans-serif;
+   padding-top: 60px;
+}
+
+h1,
+h2 {
+  text-align: center;
+  margin-top: 2rem;
+  color: #fff;
+}
+
+/* === SOUND CARD === */
+.sound-card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 800px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* === AUDIO PLAYER === */
+.audio-player-container {
+  width: 90%;
+  max-width: 700px;
+}
+
+/* === SOUND ACTIONS (Edit/Delete Buttons) === */
+.sound-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.sound-actions button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.edit-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #1976d2;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* === COMMENT SECTION === */
+.comment-section {
+  background-color: #2a2a2a;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  color: white;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers the form horizontally */
+  justify-content: center;
+}
+
+/* Comment form layout */
+.comment-section form {
+  width: 100%;
+  ma

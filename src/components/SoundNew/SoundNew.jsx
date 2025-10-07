@@ -107,7 +107,7 @@ function SoundNew() {
             <h3>Audio Description:</h3>
             <input
               type="text"
-              name="title"
+              name="description"
               value={formData.description}
               onChange={handleChange}
               placeholder="Add a Description..."

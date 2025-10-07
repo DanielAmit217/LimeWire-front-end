@@ -24,7 +24,7 @@ const Dashboard = () => {
   }, [user]);
 
   return (
-    <>
+    <div className="dashboard-page">
       <div className="greetin-block">
         <h1>Welcome, {user.username}</h1>
         <p>
@@ -57,7 +57,7 @@ const Dashboard = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

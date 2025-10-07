@@ -1,20 +1,24 @@
 .signin-page {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
   justify-content: center;
-  align-items: stretch;
+  flex-direction: column;
+  align-items: center;
   padding: 40px 0px;
   box-sizing: border-box;
   width: 60vw;
 }
 
-.signin-page h1,
-.signin-page h2 {
+.signin-page h2,
+.signin-page h3 a {
   text-align: center;
   margin: 8px 0;
   color: white;
   font-weight: 600;
+}
+
+.signin-page h3 a:hover {
+  text-decoration: underline;
+  color: rgb(113, 71, 229);
 }
 
 .signin-page form {
@@ -48,8 +52,7 @@
 }
 
 .signin-page input[type="text"],
-.signin-page input[type="password"],
-.signin-page input[type="email"] {
+.signin-page input[type="password"] {
   width: 100%;
   padding: 10px 12px;
   font-size: 16px;
@@ -61,23 +64,13 @@
 .form-actions {
   display: flex;
   gap: 12px;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 12px;
-  margin-top: 10px;
-}
-.form-actions button {
-  width: 100%;
-  padding: 12px 0;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .form-actions button[type="submit"] {
-  background-color: #007acc;
+  background-color: #000000;
   color: white;
 }
 

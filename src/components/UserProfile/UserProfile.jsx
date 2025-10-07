@@ -54,7 +54,7 @@ function UserProfile() {
   return (
     <>
       <h1>{currentUser.username || "User Profile"}</h1>
-      <h2>Your sounds:</h2>
+      <h2>Uploaded sounds:</h2>
 
       {/* Render AudioPlayer for each sound */}
       {currentUser.sounds && currentUser.sounds.length > 0 ? (
@@ -66,7 +66,7 @@ function UserProfile() {
             : null;
 
           return (
-            <div key={sound._id}>
+            <div key={sound._id} className="sound-card">
               <AudioPlayer
                 src={audioSrc}
                 title={
@@ -81,28 +81,25 @@ function UserProfile() {
               />
 
               {user && currentUser._id === user._id && (
-                <>
-                  <div key={sound._id || index}>
-                    <form
-                      action=""
-                      onSubmit={(e) => handleSoundDelete(e, sound._id)}
-                    >
-                      {user && currentUser._id === user._id && (
-                        <button type="submit">Delete Sound</button>
-                      )}
-                    </form>
+                <div className="sound-actions">
+                  <form onSubmit={(e) => handleSoundDelete(e, sound._id)}>
+                    <button type="submit" className="delete-btn">
+                      Delete Sound
+                    </button>
+                  </form>
 
-                    {user && currentUser._id === user._id && (
-                      <Link to={`/sounds/${sound._id}/edit`}>
-                        <button>Edit Sound</button>
-                      </Link>
-                    )}
-                  </div>
-                </>
+                  <Link to={`/sounds/${sound._id}/edit`}>
+                    <button type="button" className="edit-btn">
+                      Edit Sound
+                    </button>
+                  </Link>
+                </div>
               )}
 
-              <CommentForm soundId={sound._id} />
-              <CommentList soundId={sound._id} />
+              <div className="comment-section">
+                <CommentForm soundId={sound._id} />
+                <CommentList soundId={sound._id} />
+              </div>
             </div>
           );
         })

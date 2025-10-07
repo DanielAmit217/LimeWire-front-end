@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { signIn } from "../../services/authService";
 import { UserContext } from "../../context/UserContext.jsx";
+import { Link } from "react-router";
 import "./SignInForm.css";
 
 const SignInForm = () => {
@@ -35,11 +36,17 @@ const SignInForm = () => {
       <div>
         <h1>Limewire</h1>
       </div>
-      <h2>Sign in to your account</h2>
+      <h2>Sign In!</h2>
+      <h3>
+        Don’t have an account? Sign up
+        <Link to="/sign-up"> Here</Link>
+      </h3>
+
       {message && <p>{message}</p>}
+
       <form onSubmit={handleSubmit}>
-        <div className="form-component">
-          <label>Username:</label>
+        <div>
+          <label>Username</label>
           <input
             type="text"
             value={formData.username}
@@ -49,7 +56,10 @@ const SignInForm = () => {
             placeholder="Enter your username"
             required
           />
-          <label>Password:</label>
+        </div>
+
+        <div>
+          <label>Password</label>
           <input
             type="password"
             value={formData.password}
@@ -59,16 +69,13 @@ const SignInForm = () => {
             placeholder="Enter your password"
             required
           />
-          <div className="buttons">
-            <div className="button">
-              <button type="submit">Sign In</button>
-            </div>
-            <div className="button">
-              <button type="button" onClick={() => navigate("/")}>
-                Cancel
-              </button>
-            </div>
-          </div>
+        </div>
+
+        <div className="form-actions">
+          <button type="submit">Sign In</button>
+          <button type="button" onClick={() => navigate("/")}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>

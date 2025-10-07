@@ -1,9 +1,11 @@
 .landing-main {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: stretch;
-  padding: 9% 0%;
+  align-items: center;
+  justify-content: center;
+  padding: 6% 4%;
+  gap: 40px;
+  box-sizing: border-box;
 }
 
 .greet-msg {
@@ -11,41 +13,73 @@
   color: black;
   border: 0.13rem solid black;
   border-radius: 0.7rem;
-  width: 100%;
-  padding: 3%;
-}
 
-p {
+  width: 90%;
+  max-width: 900px;
+  padding: 3rem;
+  box-sizing: border-box;
+
   text-align: left;
-}
-
-em {
-  font-weight: bold;
 }
 
 .greet-msg h1 {
   position: relative;
   margin-bottom: 1.2rem;
+  text-align: center;
 }
 
 .greet-msg h1::after {
   content: "";
   position: absolute;
   left: 0;
+  bottom: -0.5rem;
   width: 100%;
   height: 2px;
   background-color: black;
-  bottom: -0.5rem;
+}
+
+.greet-msg em {
+  font-weight: bold;
+}
+
+.greet-msg p {
+  line-height: 1.6;
 }
 
 .example-sounds {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
 }
-.logo {
+
+.example-sounds > * {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+/* .logo {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
+} */
+
+@media (max-width: 700px) {
+  .example-sounds {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .example-sounds > * {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .greet-msg {
+    width: 100%;
+    padding: 2rem;
+  }
 }

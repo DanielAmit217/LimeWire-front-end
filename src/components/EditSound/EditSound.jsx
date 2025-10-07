@@ -3,6 +3,7 @@ import { updateSound, getSoundById } from "../../services/soundService";
 import { useParams, useNavigate } from "react-router";
 import { UserContext } from "../../context/UserContext";
 import AudioPlayer from "../AudioPlayer/AudioPlayer";
+import "./EditSound.css";
 
 function EditSound() {
   const [formData, setFormData] = useState({
@@ -79,27 +80,34 @@ function EditSound() {
   }, [isEditing, navigate, user]);
 
   return (
-    <div>
+    <div className="Edit-page">
       <>
         {!isEditing ? (
           <>
             <h1>Edit Sound</h1>
             <AudioPlayer src={formData.audioUrl} />
             <form encType="multipart/form-data" onSubmit={handleEdit}>
-              <input
-                type="file"
-                name="name"
-                accept="audio/*"
-                // value?
-                onChange={handleFileChange}
-                // required
-              />
-              <input
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-              />
+              <div className="input-section">
+                <div className="audio-upload">
+                  <input
+                    type="file"
+                    name="name"
+                    accept="audio/*"
+                    // value?
+                    onChange={handleFileChange}
+                    // required
+                  />
+                </div>
+                <div className="title-form">
+                  <h3>Audio Title:</h3>
+                  <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
 
               <div className="tags-section">
                 <h3>Tags:</h3>
@@ -118,11 +126,12 @@ function EditSound() {
                         checked={formData.tags.includes(tag)}
                         onChange={handleTagChange}
                       />
-                      {tag.charAt(0).toUpperCase() + tag.slice(1)}
+                      <span>{tag.charAt(0).toUpperCase() + tag.slice(1)}</span>
                     </label>
                   ))}
                 </div>
               </div>
+
               <button type="submit">save</button>
             </form>
 

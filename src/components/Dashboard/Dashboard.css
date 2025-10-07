@@ -1,9 +1,13 @@
+.dashboard-page {
+  padding-top: 60px;
+}
+
 .greetin-block {
   background-color: rgb(255, 231, 76);
   color: black;
   border-radius: 0.7rem;
   border: 0.13rem solid black;
-  width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,18 +31,15 @@
 }
 
 .sound-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
-  flex-direction: row;
-  align-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4.5rem;
+  justify-items: center;
+  align-items: start;
+  padding: 1rem;
 }
 
 .audio-player-container {
-  flex: 1 1 300px;
   width: 100%;
-  min-width: 250px;
   max-width: 400px;
 }

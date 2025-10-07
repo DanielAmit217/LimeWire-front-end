@@ -43,7 +43,7 @@ const SignUpForm = () => {
   return (
     <div className="signup-page">
       <div>
-        <div>Limewire</div>
+        <h1>Limewire</h1>
       </div>
       <h2>Sign Up!</h2>
       <h3>
