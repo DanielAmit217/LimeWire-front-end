@@ -105,6 +105,7 @@ function EditSound() {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
+                    placeholder="Edit title"
                   />
                 </div>
               </div>

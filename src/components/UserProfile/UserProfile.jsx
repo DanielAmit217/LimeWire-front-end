@@ -52,7 +52,7 @@ function UserProfile() {
   };
 
   return (
-    <>
+    <div className="profile-card">
       <h1>{currentUser.username || "User Profile"}</h1>
       <h2>Uploaded sounds:</h2>
 
@@ -96,10 +96,10 @@ function UserProfile() {
                 </div>
               )}
 
-              <div className="comment-section">
-                <CommentForm soundId={sound._id} />
-                <CommentList soundId={sound._id} />
-              </div>
+              {/* <div className="comment-section"> */}
+              {/* <CommentForm soundId={sound._id} /> */}
+              {/* <CommentList soundId={sound._id} /> */}
+              {/* </div> */}
             </div>
           );
         })
@@ -113,7 +113,7 @@ function UserProfile() {
           <button type="submit">Delete User</button>
         </form>
       )}
-    </>
+    </div>
   );
 }
 
