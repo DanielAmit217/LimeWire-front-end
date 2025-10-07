@@ -71,7 +71,6 @@
   transform: none;
 }
 
-/* TAGS SECTION */
 .New-page .tags-section {
   padding: 20px;
   height: 100%;
@@ -91,7 +90,6 @@
   margin-bottom: 16px;
 }
 
-/* TAGS CHECKBOXES */
 .New-page .tag-checkboxes {
   flex: 1;
   display: flex;
@@ -132,7 +130,6 @@
   background-color: rgb(113, 71, 229);
 }
 
-/* ERROR MESSAGE */
 .New-page .error-message {
   grid-column: 1 / -1;
   color: #d32f2f;
@@ -144,7 +141,6 @@
   border: 1px solid #ffcdd2;
 }
 
-/* MOBILE */
 @media (max-width: 600px) {
   .New-page form {
     grid-template-columns: 1fr;

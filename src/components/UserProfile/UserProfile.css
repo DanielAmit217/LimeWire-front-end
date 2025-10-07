@@ -1,9 +1,7 @@
-/* === USER PROFILE PAGE === */
-
 body {
+  background-color: #121212;
   color: white;
   font-family: "Inter", sans-serif;
-   padding-top: 60px;
 }
 
 h1,
@@ -13,14 +11,13 @@ h2 {
   color: #fff;
 }
 
-/* === SOUND CARD === */
 .sound-card {
   background-color: #1e1e1e;
   border: 1px solid #333;
   border-radius: 12px;
   padding: 1.5rem;
   margin: 2rem auto;
-  width: 100%;
+  width: 85%;
   max-width: 800px;
 
   display: flex;
@@ -31,13 +28,11 @@ h2 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* === AUDIO PLAYER === */
 .audio-player-container {
-  width: 90%;
+  width: 100%;
   max-width: 700px;
 }
 
-/* === SOUND ACTIONS (Edit/Delete Buttons) === */
 .sound-actions {
   display: flex;
   justify-content: center;
@@ -75,24 +70,89 @@ h2 {
   background-color: #d32f2f;
 }
 
-/* === COMMENT SECTION === */
 .comment-section {
   background-color: #2a2a2a;
   padding: 1rem;
   border-radius: 10px;
   margin-top: 1rem;
   color: white;
-  width: 90%;
+  width: 85%;
   margin-left: auto;
   margin-right: auto;
 
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers the form horizontally */
+  align-items: center;
   justify-content: center;
 }
 
-/* Comment form layout */
 .comment-section form {
   width: 100%;
-  ma
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-section textarea,
+.comment-section input[type="text"] {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: none;
+  background: #3a3a3a;
+  color: white;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.comment-section button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.comment-section button:hover {
+  background-color: #45a049;
+}
+
+.comment-section ul,
+.comment-section .comment-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.comment-section li {
+  background-color: #1f1f1f;
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #333;
+  word-wrap: break-word;
+}
+
+form[action=""] > button {
+  display: block;
+  margin: 2rem auto;
+  background-color: #e53935;
+  color: white;
+  padding: 0.8rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+form[action=""] > button:hover {
+  background-color: #c62828;
+}
