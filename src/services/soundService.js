@@ -15,8 +15,7 @@ const createSound = async (soundData) => {
 
 const getAllSounds = async () => {
   try {
-    const res = await api.get("/sounds");
-    const data = await res.json();
+    const { data } = await api.get("/sounds");
     return data;
   } catch (error) {
     console.error("Error fetching sounds:", error);
