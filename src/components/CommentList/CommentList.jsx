@@ -100,47 +100,48 @@ const CommentList = ({
 
   return (
     <>
-      {isEditing ? (
-        <div className="comments-container">
-          <h3 className="comments-title">Comments ({comments.length})</h3>
-          <div className="comments-list">
-            {comments.map((comment) => (
-              <div key={comment._id} className="comment-item">
-                <div className="comment-header">
-                  <span className="comment-author">
-                    {comment.user?.username ||
-                      comment.author?.username ||
-                      "Anonymous User"}
-                  </span>
-                  <span className="comment-date">
-                    {formatDate(
-                      comment.createdAt || comment.created_at || comment.date
-                    ) || "Recently"}
-                  </span>
-                  {user && comment.user && user._id === comment.user._id && (
-                    <button
-                      onClick={() => handleDeleteComment(comment._id)}
-                      className="delete-button"
-                      aria-label="Delete comment"
-                    ></button>
-                  )}
-                </div>
-                <div className="comment-text">{comment.comment_text}</div>
+      {/* {isEditing ? ( */}
+      <div className="comments-container">
+        <h3 className="comments-title">Comments ({comments.length})</h3>
+        <div className="comments-list">
+          {comments.map((comment) => (
+            <div key={comment._id} className="comment-item">
+              <div className="comment-header">
+                <span className="comment-author">
+                  {comment.user?.username ||
+                    comment.author?.username ||
+                    "Anonymous User"}
+                </span>
+                <span className="comment-date">
+                  {formatDate(
+                    comment.createdAt || comment.created_at || comment.date
+                  ) || "Recently"}
+                </span>
+                {user && comment.user && user._id === comment.user._id && (
+                  <button
+                    onClick={() => handleDeleteComment(comment._id)}
+                    className="delete-button"
+                    aria-label="Delete comment"
+                  ></button>
+                )}
               </div>
-            ))}
-          </div>
+              <div className="comment-text">{comment.comment_text}</div>
+            </div>
+          ))}
         </div>
-      ) : (
+      </div>
+      {/* ) 
+      : (
         <form>Edit comment</form>
-      )}
+      )} */}
 
-      <form onSubmit={handleEdit}>
+      {/* <form onSubmit={handleEdit}>
         <button
           onClick={() => setIsEditing((prevIsEditState) => !prevIsEditState)}
         >
           {isEditing ? "Edit Comment" : "Cancel Edit"}
         </button>
-      </form>
+      </form> */}
     </>
   );
 };
