@@ -1,40 +1,32 @@
-
----
-
-# 🎨 **README for Front-End Repo**  
-**Repo:** https://github.com/DanielAmit217/LimeWire-front-end
-
----
-
-```markdown
 # LimeWire – Front End  
-A React-based front-end for an audio library web app inspired by LimeWire.  
-Built to explore music-tech products and create an interface for browsing, playing, and managing audio files.
+A React-based client for a LimeWire-style audio library application.  
+This front end provides a clean UI for browsing, uploading, streaming, and managing audio files — built as a music-tech prototype showcasing full-stack engineering and audio-focused product design.
 
 ---
 
-## 🚀 Tech Stack  
+## 🎨 Tech Stack  
 - **React**
-- **Axios**
-- **React Router**
-- **CSS / Styled Components (update if different)**
-- **Vite or CRA (update accordingly)**
+- **Vite** (if you're using CRA, replace this)  
+- **Axios**  
+- **React Router**  
+- **Context API** for auth/session  
+- **CSS / Custom Components**
 
 ---
 
 ## 🎧 Features  
-- User authentication (login / register)  
-- Browse audio assets from the backend  
-- Audio player component for playback  
-- Upload UI for audio files  
-- Dynamic pages for categories / tags  
-- Search bar + filtering  
-- Responsive design  
+- **User Authentication** (login + register)  
+- **Audio Library View**  
+  - Browse all uploaded audio files  
+  - Filter by tags, categories, keywords  
+- **Upload Interface**  
+  - Upload audio files with metadata  
+  - UI validation + preview  
+- **Audio Player Component**  
+  - Stream audio from back-end  
+  - Basic controls (play/pause, seek, volume)  
+- **Search + Filtering**  
+- **Responsive UI**  
+- **Error Handling + Loading States**
 
 ---
-
-## 📁 Folder Structure  
-
-1. Clone the repo  
-   ```bash
-   git clone https://github.com/Buru7734/limeWire-Back-End.git
